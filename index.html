@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Amazon Appstore</title>
+    <link rel="shortcut icon" href="/img/favicon.png" type="image/x-icon">
+    <script src="https://kit.fontawesome.com/caaee2a8f1.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-md navbar-dark bc-nav fixed-top">
+        <a class="navbar-brand" href="#"><img src="./img/logo.png" alt="Logo Appstore"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+            aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <form class="form-inline ml-auto"><!--my-2 my-lg-0-->
+                <button id="registar-app" type="button" class="btn btn-primary mx-3" data-bs-toggle="modal"
+                    data-bs-target="#modal-registro">
+                    Registar nueva App
+                </button>
+                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                <button class="btn btn-secondary my-2 my-sm-0" type="submit"><i
+                        class="fa-solid fa-magnifying-glass"></i></button>
+            </form>
+        </div>
+    </nav>
+    
+    <!-- /.container -->
+    <main role="main" class="container">
+        <div class="form-floating p-3 m-3">
+            <select id="categoria" class="form-select" onchange="cargarAplicaciones();">
+                <option disabled selected>Categorias</option>
+            </select>
+        </div>
+        <div id="aplicaciones" class="starter-template row">
+            <!--apps-->
+        </div>
+    </main>
+    <!-- /.container -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="modalNuevaApp" tabindex="-1" aria-labelledby="modalNuevaAppLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div id="modal-header" class="modal-header">
+                    <!--img-->
+                </div>
+                <div class="modal-body">
+                    <div id="modal-body" class="container">
+                        <!--body-->
+                    </div>
+                    <div id="estrellas" class="text-center">
+                        <!--Estrellas-->
+                    </div>
+                    <div id="comentarios" class="container">
+                        <!--Comentarios-->
+                    </div>
+                </div>
+                <div id="footer-modal" class="modal-footer">
+                    <button id="btn-guardar" type="button" class="btn btn-success">Instalar</button>
+                    <button id="btn-cerrar" type="button" class="btn btn-secondary"
+                        data-bs-dismiss="modal">cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Fin modal-->
+
+    <!-- Modal -->
+    <div class="modal fade" id="modal-registro" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Registar nueva App</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="formulario">
+                        <div class="mb-3">
+                            <select id="categoria-add" class="form-select">
+                                <option disabled selected>Categorias</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="form-codigo" class="form-label">codigo</label>
+                            <input id="codigo-nuevo" type="text" class="form-control" id="form-codigo"
+                                aria-describedby="emailHelp" disabled>
+                        </div>
+                        <div class="mb-3">
+                            <label for="form-nombreApp" class="form-label">Nombre App</label>
+                            <input type="text" class="form-control" id="form-nombreApp" aria-describedby="emailHelp"
+                                placeholder="Ingrese el nombre de la app">
+                        </div>
+                        <div class="mb-3">
+                            <label for="form-descripcion" class="form-label">Descripcion</label>
+                            <input type="text" class="form-control" id="form-descripcion" aria-describedby="emailHelp"
+                                placeholder="Ingrese la descripcion de la app">
+                        </div>
+                        <div class="mb-3">
+                            <label for="form-calificacion" class="form-label">Calificacion</label>
+                            <input type="number" class="form-control" id="form-calificacion"
+                                aria-describedby="emailHelp" placeholder="Ingrese la calificacion de la app" min="0"
+                                max="5">
+                        </div>
+                        <div class="mb-3">
+                            <label for="form-desarrollador" class="form-label">Desarrollador</label>
+                            <input type="text" class="form-control" id="form-desarrollador" aria-describedby="emailHelp"
+                                placeholder="Ingrese el nombre del desarrollador">
+                        </div>
+                        <div class="mb-3">
+                            <label for="form-descargas" class="form-label">Descargas</label>
+                            <input type="number" class="form-control" id="form-descargas" aria-describedby="emailHelp"
+                                placeholder="Ingrese el numero de descargas">
+                        </div>
+                        <div class="mb-3">
+                            <label for="form-icono" class="form-label">Icono</label>
+                            <select name="" id="lista-imagenes" class="form-control mt-2">
+                                <option disabled selected>Seleccione Icono</option>
+                                <!--<option value="img/app-icons/1.webp">imagen 1</option>-->
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button id="guardar-app" type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+    <script src="js/funciones.js"></script>
+    <script src="js/controlador.js"></script>
+    <!--
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    -->
+</body>
+
+</html>
